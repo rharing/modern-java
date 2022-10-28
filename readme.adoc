@@ -1,0 +1,51 @@
+## Learn Java/web development by doing
+you will hopefully learn the usual java enterprise subjects:
+
+- spring
+- maven
+- hibernate
+
+I will try to teach you by doing and by doing that i will give the base classes and method calls which you can find in the tests, so look at the testcases and implement those, the testcases will contain information hidden in the testcases so look at those. the best way to learn i think is by doing it so in this course i will build some forum software
+
+The first part can be found in branch domain_start
+
+*algemeen*
+
+structuur van java projecten bestaat vaak uit
+
+----
+-->root
+-├─>domain
+-├─->dao
+-├─->service
+-├─->controller
+----
+
+domain bevat in eerste instantie de domain objecten de dingen waarover je praat met de eindgebruiker in dit geval dus: forum, gesprekken, boodschappen en gebruiker, niet de dingen die wij als it nodig hebben met uitzondering van een id field, dit is in principe alleen nodig voor de db maar het maakt alles eenvoudiger aangezien de id meestal een uniek nummer is zodat je je domein object altijd uniek kunt defnieren
+
+dao bevat de laag welke met een db zal praten(dao= data access object)
+
+service bevat de logica om verschillende domeinen aan elkaar te praten, vaak bevat dit ook business logica maar dat hoort eigenlijk bij de domein objecten
+
+controller is het beginpunt van de buitenwereld de javascript clients zullen vaak hiermee interacteren deze verwachten meestal json of form encoded data
+
+voor elke laag dienen er testcases te zijn deze zijn om te testen of de functionaliteit werkt (duh) maar beschouw ik ook vaak als documentatie: een voorbeeld:
+
+[source,java]
+----
+@Test
+public void een_locked_discussion_should_not_allow_new_messages(){
+// given a forum with a locked subject
+Forum forum = Forum.builder().name("Java Rules").build();
+Subject subject =forum.addSubject("the builder pattern is sooo convenient");
+//then: initially there are no messages
+assertEquals(0, subject.getMessages().size());
+//when we lock this subject
+subject.lock();
+//then: we cant add messages
+Optional<Message> message = subject.addMessage(Message.builder().user(User.builder().name("me").build());
+assertTrue(message.isEmpty());
+----
+
+now run your tests and watch them fail, then implement the code so the tests wont fail anymore
+
