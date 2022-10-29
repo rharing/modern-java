@@ -12,10 +12,10 @@ class ForumTest {
 	@Test
 	public void should_add_message_and subject(){
 		// given a forum dedicated to java content
-		Forum forum = new Forum("Java still rockzz")
+		Forum forum = Forum.builder().build().name("Java still rocks").build();
 		// when we add a message with subject 'awesome java projects' by the user called 'bob' and the content of ' check it out here:https://github.com/akullpp/awesome-java
 
-		User bob = new User("bob")
+		User bob = User.builder().name("Bob").build();
 		ForumMessage forumMessage = forum.addMessage("awesome java projects","check it out here:https://github.com/akullpp/awesome-java", bob);
 		assertNotNull(forumMessage);
 

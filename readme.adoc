@@ -47,7 +47,10 @@ Optional<Message> message = subject.addMessage(Message.builder().user(User.build
 assertTrue(message.isEmpty());
 ----
 
-*checkout branch domain-start*
+in this branch i added lombok to the pom.xml to reduce a lot of java boilerplate code
 
-now run your tests(either mvn test or witin the ide) and watch them fail, then implement the code so the tests wont fail anymore, also hidden in the tests are links to more knowledge
+*Study:*
+. maven  (https://www.edureka.co/blog/maven-in-java/)
+. lombok (https://projectlombok.org/)
+
 
