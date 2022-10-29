@@ -21,4 +21,9 @@ public class ForumSubject {
 
 	Forum forum;
 	private String subject;
+
+	public void addMessage(String content, User user) {
+		ForumMessage forumMessage = new ForumMessage(content, user);
+		this.messages.add
+	}
 }

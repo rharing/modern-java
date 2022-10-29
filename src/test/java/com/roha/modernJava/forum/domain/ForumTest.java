@@ -18,17 +18,26 @@ class ForumTest {
 		User bob = User.builder().name("Bob").build();
 		ForumMessage forumMessage = forum.addMessage("awesome java projects","check it out here:https://github.com/akullpp/awesome-java", bob);
 		assertNotNull(forumMessage);
-
-		assertEquals("awesome java projects", forumMessage.getSubject());
+		// then the forum should have a subject
 		assertEquals(1, forum.getSubjects().size());
+
+		// when adding a message to the same subject by whoever user
+		forumMessage = forum.addMessage("awesome java projects","nah that was just an example", bob);
+		// then we still have only one subject
+		assertEquals(1, forum.getSubjects().size());
+
+		// when we change the subject
+		forumMessage = forum.addMessage("awesome vue3 projects","check it out here:https://next.awesome-vue.js.org/", bob);
+		// then we should have 2 subjects
+		assertEquals(2, forum.getSubjects().size());
 	}
 
 	public void should_reply_on_a_message(){
 		// this testcase focus on the builder pattern,read: "https://blogs.oracle.com/javamagazine/post/exploring-joshua-blochs-builder-design-pattern-in-java"
 		Forum forum = new Forum("java beyond basics");
-		User bob = new User("bob")
+		User bob = new User("bob");
 		ForumMessage forumMessage = forum.addMessage("the builder pattern","such a good pattern, read all about it here: https://blogs.oracle.com/javamagazine/post/exploring-joshua-blochs-builder-design-pattern-in-java", bob);
-		User joshua = new User("joshua")
+		User joshua = new User("joshua");
 
 		assertEquals("awesome java projects", forumMessage.getSubject());
 		assertEquals(1, forum.getSubjects().size());

@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
  * Created on 10/29/22.
  */
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-
 public class ForumMessage {
 	private User user;
 	private String content;
+	private 
 
-
+	public ForumMessage(String content, User user) {
+		this.user = user;
+		this.content = content;
+	}
 }
