@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.joda.time.DateTime;
 
 /**
  * Created on 10/29/22.
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class ForumMessage {
 	private User user;
 	private String content;
-	private 
+	private DateTime when = new DateTime();
 
 	public ForumMessage(String content, User user) {
 		this.user = user;

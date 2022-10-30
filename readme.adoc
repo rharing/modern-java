@@ -47,7 +47,7 @@ Optional<Message> message = subject.addMessage(Message.builder().user(User.build
 assertTrue(message.isEmpty());
 ----
 
-in this branch i added lombok to the pom.xml to reduce a lot of java boilerplate code
+in this branch i added lombok to the pom.xml to reduce a lot of java boilerplate code and as i have to work with daytes and times i added jodatime, since java 8 the LocalDate and time methods from java are thread safe, but with jodatime it is easy to set a fixed now date and its not easy with LocalDate, more info jodatime: https://www.joda.org/joda-time/ and allthough even jodatime says we should use java's localdate i find jodatime easier, also deasier to use as a date without time by LDateMidnight
 
 *Study:*
 . maven  (https://www.edureka.co/blog/maven-in-java/)
