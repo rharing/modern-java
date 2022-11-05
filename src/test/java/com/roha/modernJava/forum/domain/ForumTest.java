@@ -56,67 +56,13 @@ class ForumTest {
 		assertEquals("Name", actualForum.getName());
 	}
 
-	/**
-	 * Method under test: {@link Forum#addMessage(String, String, User)}
-	 */
-	@Test
-	void testAddMessage() {
-		Forum forum = new Forum("Name");
-		User user = new User("Name");
-		ForumMessage actualAddMessageResult = forum.addMessage("Hello from the Dreaming Spires",
-				"Not all who wander are lost", user);
-		assertEquals("Not all who wander are lost", actualAddMessageResult.getContent());
-		assertSame(user, actualAddMessageResult.getUser());
-		DateTime when = actualAddMessageResult.getWhen();
-		assertEquals(1, when.getEra());
-		assertEquals(0, when.year().getLeapAmount());
-	}
 
-	/**
-	 * Method under test: {@link Forum#addMessage(String, String, User)}
-	 */
-	@Test
-	void testAddMessage2() {
-		Forum forum = new Forum("Name");
-		User user = new User("Name");
-		forum.addMessage("Hello from the Dreaming Spires", "Not all who wander are lost", user);
-		ForumMessage actualAddMessageResult = forum.addMessage("Hello from the Dreaming Spires",
-				"Not all who wander are lost", new User("Name"));
-		assertEquals("Not all who wander are lost", actualAddMessageResult.getContent());
-		assertEquals(user, actualAddMessageResult.getUser());
-		DateTime when = actualAddMessageResult.getWhen();
-		assertEquals(1, when.getEra());
-		assertEquals(0, when.year().getLeapAmount());
-	}
-
-	/**
-	 * Method under test: {@link Forum#addMessage(String, String, User)}
-	 */
-	@Test
-	void testAddMessage3() {
-		Forum forum = new Forum("Name");
-		forum.addMessage("Subject", "Not all who wander are lost", new User("Hello from the Dreaming Spires"));
-		User user = new User("Name");
-		forum.addMessage("Hello from the Dreaming Spires", "Not all who wander are lost", user);
-		ForumMessage actualAddMessageResult = forum.addMessage("Hello from the Dreaming Spires",
-				"Not all who wander are lost", new User("Name"));
-		assertEquals("Not all who wander are lost", actualAddMessageResult.getContent());
-		assertEquals(user, actualAddMessageResult.getUser());
-		DateTime when = actualAddMessageResult.getWhen();
-		assertEquals(1, when.getEra());
-		assertEquals(0, when.year().getLeapAmount());
-	}
-
-	/**
-	 * Method under test: {@link Forum#getLastActiveSubjects()}
-	 */
 	@Test
 	void testGetLastActiveSubjects() {
 		assertTrue((new Forum("Name")).getLastActiveSubjects().isEmpty());
 	}
 
 
-/*
 	@Test
 	public void should_reply_on_a_message() {
 		// this testcase focus on the builder pattern,read: "https://blogs.oracle.com/javamagazine/post/exploring-joshua-blochs-builder-design-pattern-in-java"
@@ -125,16 +71,16 @@ class ForumTest {
 		ForumMessage forumMessage = forum.addMessage("the builder pattern", "such a good pattern, read all about it here: https://blogs.oracle.com/javamagazine/post/exploring-joshua-blochs-builder-design-pattern-in-java", bob);
 		User joshua = new User("joshua");
 
-		assertEquals("awesome java projects", forumMessage.getSubject());
+		assertEquals("the builder pattern", forumMessage.getSubject());
 		assertEquals(1, forum.getSubjects().size());
 		ForumMessage bookadvertisement = forumMessage.reply("yes it is and you should definetely read joshua bloch Effective java", joshua);
 		assertNotNull(bookadvertisement);
 		assertEquals("the builder pattern", forumMessage.getSubject());
 		assertEquals(1, forum.getSubjects().size());
 
-		assertEquals(2, forumMessage.getSubject().getMessages().size());
+		assertEquals(2, forumMessage.getForumSubject().getMessageCount());
 	}
-*/
+
 }
 
 
