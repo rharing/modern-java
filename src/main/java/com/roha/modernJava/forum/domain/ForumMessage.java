@@ -1,10 +1,6 @@
 package com.roha.modernJava.forum.domain;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
